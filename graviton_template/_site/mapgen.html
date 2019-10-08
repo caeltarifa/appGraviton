@@ -1,0 +1,748 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title> Graviton :: Mapgen</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/core.css' %}">
+    <!--Libraries-->
+    <link rel="stylesheet" href="{% static 'assets/fonts/cryptofont/css/cryptofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/js/modalvideo/modal-video.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/js/aos/aos.css' %}">
+
+</head>
+
+<body>
+    <!-- Pageloader -->
+    <div class="pageloader is-theme"></div>
+    <div class="infraloader is-active"></div>
+
+    <!--Start page-->
+    <div id="inicio"></div>
+
+    <div class="roadmap-wrapper">
+        <!-- Landing page Hero -->
+        <section class="hero is-medium">
+            <!--NAV BAR-->
+            <div class="hero-head">
+
+                <!-- Cloned navbar -->
+                <!-- Cloned navbar that comes in on scroll -->
+                <nav id="navbar-clone" class="navbar is-fixed is-dark">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="{% url 'principal_presentacion' %}" class="navbar-item">
+                                <img class="rotating" src="{% static 'assets/images/logo/krypton-gradient.svg' %}"
+                                    alt="">
+                                <span class="brand-name">Graviton</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <span class="navbar-burger burger" data-target="cloneNavbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <!-- Menu -->
+                        <div id="cloneNavbarMenu" class="navbar-menu">
+                            <div class="navbar-end">
+
+                                <!--menu item-->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#inicio">
+                                        <!--target="_blank"-->
+                                        INICIO
+                                    </a>
+                                </div>
+
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="{% url 'pagina_generar' %}">
+                                        <!--target="_blank"-->
+                                        <img class="telegram" src="{% static 'assets/images/logo/telegram.svg' %}"
+                                            alt="">
+                                        GENERAR
+                                    </a>
+                                </div>
+                                <!-- VER MAPA DE DATOS -->
+                                <div class="navbar-item">
+                                    <a href="{% url 'index_mapa' %}"
+                                        class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Ver Mapa</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Cloned navbar -->
+
+
+                <!-- Static navbar -->
+                <nav class="navbar is-light">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="{% url 'principal_presentacion' %}" class="navbar-item">
+                                <img class="rotating" src="{% static 'assets/images/logo/krypton.svg' %}" alt="">
+                                <span class="brand-name">Graviton</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <span class="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <!-- Menu -->
+                        <div id="navbarMenu" class="navbar-menu light-menu">
+                            <div class="navbar-end">
+
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="{% url 'pagina_generar' %}">
+                                        <!-- target="_blank"> -->
+                                        <img class="telegram" src="{% static 'assets/images/logo/telegram.svg' %}"
+                                            alt="">
+                                        GENERAR
+                                    </a>
+                                </div>
+                                <!-- VER MAPA DE DATOS -->
+                                <div class="navbar-item">
+                                    <a href="{% url 'index_mapa' %}"
+                                        class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Ver Mapa</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Static navbar -->
+            </div>
+            <!--/NAV BAR-->
+            
+            <!--MAP section-->
+            <div class="has-text-centered " style="align-content: center; z-index: 0;">
+                <a href="#sectionDatos">
+                    <img src="{% static 'Bolivia_municipios_origi.png' %}" style="width: 45%; height: 85%;">
+                </a>
+            </div>
+            <!--/MAP section-->
+        </section>
+
+        <!-- DATOS section -->
+        <section class="section is-medium is-end" >
+            <!-- Container -->
+            <div class="container" id="sectionDatos">
+                <!-- Divider -->
+                <div class="divider is-centered"></div>
+                <!-- Title & subtitle -->
+                <div class="hero-body has-text-centered " style="z-index: 1;" >
+                    <div class="columns">
+                        <div class="column is-6 is-offset-3">
+                            <h1 class="title is-2 is-light is-semibold is-spaced main-title">Estado del tiempo</h1>
+                            <h2 class="subtitle is-5 is-light is-thin">
+                                Por cada estacion metereologica existe un boton para ver el historial de datos del
+                                tiempo
+                            </h2>
+                            <!-- CTA -->
+                            <p>
+                                <a href="#roadmap" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                    <span class="text">Ver datos</span>
+                                    <span class="front-gradient"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper is-large" id="roadmap">
+
+                    <!-- Flying tabs wrapper -->
+                    <div class="flying-wrapper">
+                        <!-- Tabs container names -->
+                        <div class="flying-tabs-container">
+                            <!-- Tabs -->
+                            <div class="flying-tabs">
+                                <div class="flying-child tab-1 is-active" data-tab="tab-1"><a
+                                        href="javascript:void(0);">TAF</a>
+                                </div>
+
+                                <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">METAR</a>
+                                </div>
+
+                                <div class="flying-child tab-3" data-tab="tab-3"><a href="javascript:void(0);">SPECI</a>
+                                </div>
+
+                                <div class="flying-child tab-4" data-tab="tab-4"><a
+                                        href="javascript:void(0);">SIGMET</a>
+                                </div>
+                                <div class="slider"></div>
+                            </div>
+                        </div>
+
+                        <!-- Tabs content wrapper -->
+                        <div class="flying-tabs-content">
+                            <!-- Tab 1 -->
+                            <div id="tab-1" class="tab-content is-active">
+                                <!-- LINEA DEL TIEMPO -->
+                                <section class="main-timeline animated preFadeInUp fadeInUp ">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">6 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">5 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div>
+                                                <span class="item-title">4 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">3 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">2 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">1 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">30 de septiembre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                            <!-- /Tab 1 -->
+
+                            <!-- Tab 2 -->
+                            <div id="tab-2" class="tab-content">
+                                <!-- LINEA DEL TIEMPO -->
+                                <section class="main-timeline animated preFadeInUp fadeInUp">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">6 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">5 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div>
+                                                <span class="item-title">4 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">3 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">2 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">1 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">30 de septiembre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                            <!-- /Tab 2 -->
+
+                            <!-- Tab 3 -->
+                            <div id="tab-3" class="tab-content">
+                                <!-- LINEA DEL TIEMPO -->
+                                <section class="main-timeline animated preFadeInUp fadeInUp">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">6 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">5 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div>
+                                                <span class="item-title">4 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">3 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">2 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">1 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">30 de septiembre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                            <!-- /Tab 3 -->
+
+                            <!-- Tab 4 -->
+                            <div id="tab-4" class="tab-content">
+                                <!-- LINEA DEL TIEMPO -->
+                                <section class="main-timeline animated preFadeInUp fadeInUp">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">6 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">5 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div>
+                                                <span class="item-title">4 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">3 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">2 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">1 de octubre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="item-title">30 de septiembre 2019</span>
+                                                <time>UTC 2300</time>
+                                                <span class="item-content">
+                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
+                                                    SCT200
+                                                    11/M06 Q1035=
+                                                </span>
+                                                <span class="more">
+                                                    <i data-feather="file-text"></i>
+                                                    <a href="#">Dato completo</a>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                            <!-- /Tab 4 -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- /Container -->
+        </section>
+        <!-- /DATOS section -->
+
+
+    </div>
+
+
+
+
+    <!--PIE DE PAGINA-->
+    <footer class="krypton-footer">
+            <div class="container">
+                <!-- Logo -->
+                <div class="footer-logo">
+                    <a href="#">
+                        <img class="rotating" src="{% static 'assets/images/logo/krypton-gradient.svg' %}" alt="">
+                        <div class="brand-name">Nuclear</div>
+                    </a>
+                </div>
+    
+<!-- Columns -->
+<div class="columns footer-columns is-vcentered">
+    <!-- Links group -->
+        <div class="column is-6">
+            <ul class="footer-links">
+
+                <li>
+                    <a href="#">Upsilon</a>
+                </li>
+
+                <li>
+                    <a href="#">Boson</a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Links group -->
+        <div class="column is-6">
+            <ul class="footer-links">
+                <li>
+                    <a href="#">Positron</a>
+                </li>
+
+                <li>
+                    <a href="#">Tauon</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+                <!-- Copyright -->
+                <p class="k-copyright">© 2019 | Graviton.</p>
+                <br>
+                <!-- Made by -->
+                <p class="coded-by">Diseñado y codificado <a href="https://github.com" target="_blank">Cael Tarifa</a></p>
+            </div>
+    
+            <!-- Absolute image -->
+        </footer>
+        <!--/PIE DE PAGINA-->
+
+
+    <!-- Core js -->
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    <!--script src="assets/js/particlesjs/particles.min.js"></script-->
+    <script src="{% static 'assets/js/aos/aos.js' %}"></script>
+
+
+    <script src="{% static 'assets/js/timer.js' %}"></script>
+    <script src="{% static 'assets/js/timeline.js' %}"></script>
+    <script src="{% static 'assets/js/roadmap.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</body>
+
+</html>

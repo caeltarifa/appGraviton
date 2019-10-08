@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Nuevo dato taf</h1>
+<div class="form-group">
+    <form method="POST" class="post-form">
+
+        {% csrf_token %}
+
+        {% for elemento in form.visible_fields %}
+        {% if elemento.name == "taf" %}
+        <div class="input-group-prepend">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" onclick="sustituir()">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {{ elemento }}
+        <br>
+        {% endfor %}
+
+        <button type="submit" class="save btn btn-primary">GUARDAR</button>
+
+    </form>
+</div>
+
+<script>
+    function sustituir() {
+        document.getElementById('id_taf').value="hola mundo";
+    }
+</script>
+{% endblock %}

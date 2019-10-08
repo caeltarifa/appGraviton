@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>FELICIDADES!</h1>
+    <br>
+
+    <div class="post">
+        {% if post.puntos_notif %}
+        <div class="date">
+            {{ post.puntos_notif }}
+        </div>
+        {% endif %}
+        <h1>
+            Respecto al Post: {{ post.origen}}
+        </h1>
+    </div>
+{% endblock content %}
