@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block formulario %}
+
+
+<h1>Bienvenido! {{user.get_username}}</h1>
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">¿Olvidaste tu password?</a></p>
+
+{% endblock formulario %}

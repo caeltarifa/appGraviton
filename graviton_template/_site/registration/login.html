@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block formulario %}
+
+{% if form.errors %}
+    <p class="is-3 is-light is-semibold is-spaced has-text-centered">El usuario y password no coinciden. Intentalo nuevamente.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p class="is-3 is-light is-semibold is-spaced has-text-centered">
+        Tu cuenta no tiene acceso a esta pagina. Para continuar,
+        por favor ingresa con una cuenta que tenga acceso.</p>
+    {% else %}
+    {% endif %}
+{% endif %}
+<h1 class="title is-3 is-light is-semibold is-spaced main-title has-text-centered">Identificate</h1>
+<br>
+<form method="post" action="{% url 'login' %}" class="login-form">
+    {% csrf_token %}
+    
+    <!-- Field -->
+    <div class="control-material is-primary">
+        {{ form.username | add_class:'material-input' }}
+        <!-- <input class="material-input " type="text" required> -->
+        <span class="material-highlight"></span>
+        <span class="bar"></span>
+        <label>Usuario</label>
+    </div>
+    <!-- Field -->
+    <div class="control-material is-primary">
+        {{ form.password | add_class:'material-input' }}
+        <!-- <input class="material-input " type="password" required> -->
+        <span class="material-highlight"></span>
+        <span class="bar"></span>
+        <label>Password</label>
+    </div>
+
+    <!-- Submit -->
+    <div>
+        <button class="button is-button k-button k-primary raised has-gradient is-bold">
+            <span class="text">Iniciar</span>
+            <span class="front-gradient"></span>
+        </button>
+
+        <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+
+
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">¿Olvidaste tu password?</a></p>
+
+
+
+{% endblock formulario %}

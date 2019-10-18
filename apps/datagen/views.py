@@ -9,7 +9,15 @@ from apps.mapgen.views import view_mapa_index
 
 #mostrando la pagina principal de datagen
 def view_generador_index(request):
-    return render(request, 'datagen/index.html')
+    if request.user.is_authemticated:
+        return render(request, 'datagen/index.html')
+    else:
+        return redirect('login')
+
+
+
+
+
 
 def view_form_taf(request):
     if request.method == 'POST':

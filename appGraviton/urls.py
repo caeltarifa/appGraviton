@@ -18,12 +18,20 @@ from django.urls import path, include
 
 from apps.datagen import views
 from apps.mapgen import views
-from appGraviton.views import principal_presentacion
+from appGraviton.views import principal_presentacion, despues_login, denegar_login
 
 urlpatterns = [
     path('', principal_presentacion, name='principal_presentacion'),
+    path('bienvenido/', despues_login, name='despues_login'),
     path('admin/', admin.site.urls),
     path('datagen/',include('apps.datagen.urls')),
     path('datagen/postdetail/<int:pk>/', views.post_detail , name='post_detail'),
     path('mapgen/',include('apps.mapgen.urls')),
+    path('accounts/login',denegar_login),
+]
+
+
+#Add Django site authentication urls (for login, logout, password management)
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
