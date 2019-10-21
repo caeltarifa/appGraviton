@@ -192,6 +192,10 @@
             <h4 class="subtitle is-6 is-light has-text-centered is-compact">Introduce los informacion valida en los
                 siguientes campos para generar el dato metereologico y publicarlo.</h4>
 
+
+
+
+
             <!-- Content wrapper -->
             <div class="content-wrapper is-large">
 
@@ -202,13 +206,13 @@
                         <!-- Tabs -->
                         <div class="flying-tabs">
                             <div class="flying-child tab-1 is-active" data-tab="tab-1"><a
-                                    href="javascript:void(0);">TAF</a>
+                                    href="javascript:void(0);">METAR</a>
                             </div>
 
-                            <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">METAR</a>
+                            <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">SPECI</a>
                             </div>
 
-                            <div class="flying-child tab-3" data-tab="tab-3"><a href="javascript:void(0);">SPECI</a>
+                            <div class="flying-child tab-3" data-tab="tab-3"><a href="javascript:void(0);">TAF</a>
                             </div>
 
                             <div class="flying-child tab-4" data-tab="tab-4"><a href="javascript:void(0);">SIGMET</a>
@@ -224,12 +228,11 @@
                             <div class="columns is-vcentered tab-content-wrapper">
                                 <!-- dato TAF -->
                                 <div class="column is-offset-1">
-                                    <div class="text-content">
-                                        <!--formualrio para generar-->
-                                        <form class="login-form ">
+                                    <!--formualrio para generar-->
+                                    <form class="login-form ">
+                                        <div class="text-content">
                                             <!--row #1 -->
                                             <div class="columns animated preFadeInUp fadeInUp">
-
                                                 <div class="column">
                                                     <!-- Field -->
                                                     <div class="control-material is-primary is-grouped column is-9 ">
@@ -241,9 +244,10 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="column">
-                                                    <div class="select is-rounded">
-                                                        <select>
+                                                <div class="column  ">
+                                                    <div
+                                                        class="select is-rounded control-material is-primary is-grouped is-3">
+                                                        <select id="idlugar">
                                                             <option>SLLP</option>
                                                             <option>SLVR</option>
                                                             <option>SLRY</option>
@@ -262,8 +266,10 @@
                                                     <table>
                                                         <td>
                                                             <!-- Field DAY -->
-                                                            <div class="control-material is-primary is-grouped column is-9 ">
-                                                                <input min="1" max="31" maxlength="2"
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="iddia" oninput="validatornumero2(this)"
+                                                                    min="1" max="31" maxlength="2"
                                                                     class="material-input animated preFadeInUp fadeInUp "
                                                                     type="number">
                                                                 <span class="material-highlight"></span>
@@ -271,410 +277,571 @@
                                                                 <label class="animated preFadeInUp fadeInUp">Dia</label>
                                                             </div>
                                                         </td>
-    
+
                                                         <td>
                                                             <!-- Field HOUR -->
-                                                            <div class="control-material is-primary is-grouped column is-9 ">
-                                                                <input oninput="validatornumero2(this)" min="0" max="23" maxlength="2"
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="idhora" oninput="validatornumero2(this)"
+                                                                    min="0" max="23" maxlength="2"
                                                                     class="material-input animated preFadeInUp fadeInUp "
                                                                     type="number">
                                                                 <span class="material-highlight"></span>
                                                                 <span class="bar"></span>
-                                                                <label class="animated preFadeInUp fadeInUp">Hora</label>
+                                                                <label
+                                                                    class="animated preFadeInUp fadeInUp">Hora</label>
                                                             </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h1 style="color:white; font-size:20px">Z</h1>
                                                         </td>
                                                     </table>
                                                 </div>
 
-                                                <div class="column">
-                                                    
-                                                </div>
                                             </div>
 
                                             <!--row #2 -->
                                             <div class="columns animated preFadeInUp fadeInUp">
-                                                <div class="column">
-                                                    <!-- Field WIND DIRECTION -->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="0" max="360" step="10"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Direccion
-                                                            viento</label>
-                                                    </div>
-                                                </div>
 
                                                 <div class="column">
-                                                    <!-- Field WIND intensity -->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="0" max="99"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Intensidad
-                                                            viento</label>
-                                                    </div>
+                                                    <table>
+                                                        <td>
+                                                            <!-- Field WIND DIRECTION -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="iddireccionviento" min="0" max="360"
+                                                                    step="10"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                    viento</label>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <!-- Field 0-99 -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="idintensidad"
+                                                                    oninput="validatornumero2(this)" min="1" max="31"
+                                                                    maxlength="2"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label
+                                                                    class="animated preFadeInUp fadeInUp">Intensidad</label>
+                                                            </div>
+                                                        </td>
+
+                                                        <!-- Field categoria -->
+                                                        <div class="control"></div>
+
+                                                        <td class="material-input animated preFadeInUp fadeInUp ">
+                                                            <label class="radio">
+                                                                <input name='tipoviento' id="idtipoviento1" value="KT"
+                                                                    type="radio" name="answer"
+                                                                    class=" animated preFadeInUp fadeInUp">
+                                                                <h1 style="color:white; font-size:20px">KT</h1>
+                                                            </label>
+                                                        </td>
+
+                                                        <td>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;
+                                                        </td>
+
+                                                        <td class="material-input animated preFadeInUp fadeInUp ">
+                                                            <label class="radio">
+                                                                <input name='tipoviento' id="idtipoviento2" value="G"
+                                                                    type="radio" name="answer"
+                                                                    class="animated preFadeInUp fadeInUp">
+                                                                <h1 style="color:white; font-size:20px"> G</h1>
+                                                            </label>
+                                                        </td>
+                                                    </table>
                                                 </div>
 
-                                                <div class="column">
-                                                    <!-- Field GUST -->
+
+                                                <td>
+                                                    <!-- Field libre-->
                                                     <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="1" max="99"
+                                                        <input id="idrafaga" oninput="validatornumero2(this)" min="1"
+                                                            max="31" maxlength="2"
                                                             class="material-input animated preFadeInUp fadeInUp "
                                                             type="number">
                                                         <span class="material-highlight"></span>
                                                         <span class="bar"></span>
                                                         <label class="animated preFadeInUp fadeInUp">Rafaga</label>
                                                     </div>
-                                                </div>
+                                                </td>
 
-                                                <div class="column">
-                                                    <!-- Field WIND DIRECTION 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="0" max="360" step="10"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Direccion viento
-                                                            1</label>
-                                                    </div>
-                                                </div>
+                                                <td class="material-input animated preFadeInUp fadeInUp ">
+                                                    <h1 style="color:white; font-size:20px">KT</h1>
+                                                </td>
 
-                                                <div class="column">
-                                                    <!-- Field WIND DIRECTION 2-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="0" max="360" step="10"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Direccion viento
-                                                            2</label>
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND DIRECTION 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="iddireccion1" min="0" max="360" step="10"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                viento 1
+                                                            </label>
+                                                        </div>
                                                     </div>
+                                                </td>
+
+                                                <td class="material-input animated preFadeInUp fadeInUp ">
+                                                    <h1 style="color:white; font-size:20px">V</h1>
+                                                </td>
+
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND DIRECTION 2-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="iddireccion2" min="0" max="360" step="10"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                viento
+                                                                2</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!--row #3 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <div class="column">
+                                                <!-- Field WIND VISINILITY 1-->
+                                                <div class="control-material is-primary is-grouped column is-11 ">
+                                                    <input id="idvisibilidad1" min="0" max="9999" step="50"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="number">
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Visibilidad
+                                                        1</label>
                                                 </div>
                                             </div>
 
-                                            <!--row #3 -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
+                                            <div class="column">
+                                                <div class="select is-rounded ">
+                                                    <select id="iddireccionvisibilidad1"
+                                                        class="material-input animated preFadeInUp fadeInUp">
+                                                        <option> </option>
+                                                        <option>N </option>
+                                                        <option>NE </option>
+                                                        <option>E </option>
+                                                        <option>SE </option>
+                                                        <option>S </option>
+                                                        <option>SW </option>
+                                                        <option>W </option>
+                                                        <option>NW</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                                <div class="column">
+                                            <div class="column">
+                                                <!-- Field WIND VISINILITY 1-->
+                                                <div class="control-material is-primary is-grouped column is-11 ">
+                                                    <input id="idvisibilidad2" min="50" max="9999" step="50"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="number">
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Visibilidad
+                                                        2</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <div class="select is-rounded ">
+                                                    <select id="iddireccionvisibilidad2"
+                                                        class="material-input animated preFadeInUp fadeInUp">
+                                                        <option> </option>
+                                                        <option>N </option>
+                                                        <option>NE </option>
+                                                        <option>E </option>
+                                                        <option>SE </option>
+                                                        <option>S </option>
+                                                        <option>SW </option>
+                                                        <option>W </option>
+                                                        <option>NW</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--row #4 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno1" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 1</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno2" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 2</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno3" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--row #5 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 1</p>
+                                                            <select id="idnubosidad1"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor1" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 2</p>
+                                                            <select id="idnubosidad2"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor2" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 3</p>
+                                                            <select id="idnubosidad3"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor3" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!--row #6 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <table>
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND VISINILITY 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idtemperatura" min="-50" max="50"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label
+                                                                class="animated preFadeInUp fadeInUp">Temperatura</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <h1 style="color:white; font-size:20px">/</h1>
+                                                </td>
+
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND VISINILITY 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idtemperaturarocio" min="-50" max="50"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Temperatura
+                                                                Rocio</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
                                                     <!-- Field WIND VISINILITY 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="50" max="9999" step="50"
+                                                    <div class="control-material is-primary is-grouped column is-15 ">
+                                                        <input id="idhumrelativa" min="0" max="100"
                                                             class="material-input animated preFadeInUp fadeInUp "
                                                             type="number">
                                                         <span class="material-highlight"></span>
                                                         <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Visibilidad 1</label>
+                                                        <label class="animated preFadeInUp fadeInUp">Humedad
+                                                            relativa</label>
                                                     </div>
-                                                </div>
+                                                </td>
 
-                                                <div class="column">
-                                                    <div class="select is-rounded ">
-                                                        <select class="material-input animated preFadeInUp fadeInUp">
-                                                            <option>- </option>
-                                                            <option>N </option>
-                                                            <option>NE </option>
-                                                            <option>E </option>
-                                                            <option>SE </option>
-                                                            <option>S </option>
-                                                            <option>SW </option>
-                                                            <option>W </option>
-                                                            <option>NW</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
+                                                <td>
                                                     <!-- Field WIND VISINILITY 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="50" max="9999" step="50"
+                                                    <div class="control-material is-primary is-grouped column is-15 ">
+                                                        <input id="idqnh" min="0" max="2500"
                                                             class="material-input animated preFadeInUp fadeInUp "
                                                             type="number">
                                                         <span class="material-highlight"></span>
                                                         <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Visibilidad 2</label>
+                                                        <label class="animated preFadeInUp fadeInUp">QNH</label>
                                                     </div>
-                                                </div>
+                                                </td>
+                                            </table>
 
-                                                <div class="column">
-                                                    <div class="select is-rounded ">
-                                                        <select class="material-input animated preFadeInUp fadeInUp">
-                                                            <option>- </option>
-                                                            <option>N </option>
-                                                            <option>NE </option>
-                                                            <option>E </option>
-                                                            <option>SE </option>
-                                                            <option>S </option>
-                                                            <option>SW </option>
-                                                            <option>W </option>
-                                                            <option>NW</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <h1 style="color:white; font-size:20px">P &nbsp</h1>
+                                                    </td>
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi1">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
 
-                                                
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi2">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
 
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi3">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi4">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </table>
                                             </div>
 
-                                            <!--row #4 -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input maxlength="6" class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">fenomeno 1</label>
-                                                    </div>
-                                                </div>
+                                        </div>
 
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input maxlength="6" class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">fenomeno 2</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input maxlength="6" class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">fenomeno 3</label>
-                                                    </div>
+                                        <!--row #ultimo -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-12 ">
+                                                    <input id="idnota" maxlength="40"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Notas</label>
                                                 </div>
                                             </div>
 
-                                            <!--row #5 -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Nubosidad 1</label>
-                                                    </div>
+                                            <div class="column">
+                                                <div
+                                                    class="select is-rounded is-primary is-grouped animated preFadeInUp fadeInUp ">
+                                                    <select id="idtipofin">
+                                                        <option>NOSIG</option>
+                                                        <option>BECMG</option>
+                                                        <option>TEMP</option>
+                                                    </select>
                                                 </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Nubosidad 2</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Nubosidad 3</label>
-                                                    </div>
-                                                </div>
-    
-                                                <div class="column">
-                                                    <!-- Field WIND VISINILITY 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="-50" max="50"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Temperatura</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field WIND VISINILITY 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="-50" max="50"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Temperatura Rocio</label>
-                                                    </div>
-                                                </div>>
                                             </div>
 
-                                           
-                                            <!--row #6 -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
-                                                
-                                                <div class="column">
-                                                    <!-- Field WIND VISINILITY 1-->
-                                                    <div class="control-material is-primary is-grouped column is-11 ">
-                                                        <input min="-50" max="50"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Humedad relativa</label>
-                                                    </div>
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-12 ">
+                                                    <input id="idfin" maxlength="40"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Valor</label>
                                                 </div>
-
-                                                <div class="column">
-                                                    <table>
-                                                        <td><h1  style="color:white; font-size:20px">P &nbsp</h1></td>
-                                                        <td>
-                                                                <div class="select is-rounded">
-                                                                        <select>
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
-                                                                            <option>4</option>
-                                                                            <option>5</option>
-                                                                            <option>6</option>
-                                                                            <option>7</option>
-                                                                            <option>8</option>
-                                                                        </select>
-                                                                    </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="select is-rounded">
-                                                                    <select>
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                        <option>6</option>
-                                                                        <option>7</option>
-                                                                        <option>8</option>
-                                                                    </select>
-                                                                </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="select is-rounded">
-                                                                    <select>
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                        <option>6</option>
-                                                                        <option>7</option>
-                                                                        <option>8</option>
-                                                                    </select>
-                                                                </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="select is-rounded">
-                                                                <select>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                    </table>
-                                                </div>
-
                                             </div>
 
-                                            <!--row #ultimo -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
-                                                
+                                            <div class="column">
+                                                <label class="checkbox">
+                                                    <input type="checkbox">
+                                                    Opcion
+                                                </label>
                                             </div>
+                                        </div>
 
-                                            <!--row #ultimo -->
-                                            <div class="columns animated preFadeInUp fadeInUp">
 
-                                                <div class="column">
-                                                    <!-- Field DAY -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input min="1" max="31"
-                                                            class="material-input animated preFadeInUp fadeInUp "
-                                                            type="number">
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">Dia</label>
-                                                    </div>
-                                                </div>
+                                        <!-- Submit -->
+                                        <div>
+                                            <a onclick="validarform()"
+                                                class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
+                                                <span class="text">Generar</span>
+                                                <span class="front-gradient"></span>
+                                            </a>
 
-                                                
-                                                <div class="column">
-                                                    <!-- Field DAY -->
-                                                    <div class="control">
-                                                        <label class="radio">
-                                                            <input type="radio" name="answer">
-                                                            Yes
-                                                        </label>
-                                                        <label class="radio">
-                                                            <input type="radio" name="answer">
-                                                            No
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <button
+                                                class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
+                                                <span class="text">Enviar y guardar</span>
+                                                <span class="front-gradient"></span>
+                                            </button>
 
-                                                <div class="column">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox">
-                                                        Remember me
-                                                    </label>
-                                                </div>
+                                        </div>
 
-                                            </div>
-                                            
-
-                                            <!-- Submit -->
-                                            <div>
-                                                <a onclick="validarForm()"
-                                                    class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
-                                                    <span class="text">Generar</span>
-                                                    <span class="front-gradient"></span>
-                                                </a>
-
-                                                <button
-                                                    class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
-                                                    <span class="text">Enviar y guardar</span>
-                                                    <span class="front-gradient"></span>
-                                                </button>
-
-                                            </div>
-
-                                        </form>
-                                        <!--GENERAR EN TEXT AREA-->
-                                        <div class="column">
-                                            <!-- Field -->
-                                            <div class="control-material is-secondary is-grouped column is-9 ">
-                                                <textarea cols="30" rows="5"
-                                                    class="animated preFadeInUp fadeInUp"></textarea>
-                                                <span class="material-highlight"></span>
-                                                <span class="bar"></span>
-                                            </div>
+                                    </form>
+                                    <!--GENERAR EN TEXT AREA-->
+                                    <div class="column">
+                                        <!-- Field -->
+                                        <div class="control-material is-secondary is-grouped column is-9 ">
+                                            <textarea id="idresultado" cols="30" rows="5"
+                                                class="animated preFadeInUp fadeInUp"></textarea>
+                                            <span class="material-highlight"></span>
+                                            <span class="bar"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -683,206 +850,624 @@
                         <!-- /Tab 1 -->
 
                         <!-- Tab 2 -->
-                        <div id="tab-2" class="tab-content">
+                        <div id="tab-2" class="tab-content is-active">
                             <div class="columns is-vcentered tab-content-wrapper">
-                                <!-- dato METAR -->
+                                <!-- dato TAF -->
                                 <div class="column is-offset-1">
-                                    <div class="text-content">
-                                        <!--formualrio para generar-->
-                                        <form class="login-form ">
+                                    <!--formualrio para generar-->
+                                    <form class="login-form ">
+                                        <div class="text-content">
                                             <!--row #1 -->
-                                            <div class="columns ">
-                                                <!-- Field -->
-
+                                            <div class="columns animated preFadeInUp fadeInUp">
                                                 <div class="column">
                                                     <!-- Field -->
                                                     <div class="control-material is-primary is-grouped column is-9 ">
                                                         <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
+                                                            type="text" value="METAR" disabled>
                                                         <span class="material-highlight"></span>
                                                         <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">codigo oaci</label>
+                                                        <!-- <label class="animated preFadeInUp fadeInUp">codigo oaci</label> -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="column  ">
+                                                    <div
+                                                        class="select is-rounded control-material is-primary is-grouped is-3">
+                                                        <select id="idlugar">
+                                                            <option>SLLP</option>
+                                                            <option>SLVR</option>
+                                                            <option>SLRY</option>
+                                                            <option>SLAL</option>
+                                                            <option>SLUY</option>
+                                                            <option>SLCB</option>
+                                                            <option>SLTJ</option>
+                                                            <option>SLCH</option>
+                                                            <option>SLMT</option>
+                                                            <option>SLRY</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">pediodo_validez</label>
-                                                    </div>
-                                                </div>
+                                                    <table>
+                                                        <td>
+                                                            <!-- Field DAY -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="iddia" oninput="validatornumero2(this)"
+                                                                    min="1" max="31" maxlength="2"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label class="animated preFadeInUp fadeInUp">Dia</label>
+                                                            </div>
+                                                        </td>
 
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">viento</label>
-                                                    </div>
-                                                </div>
+                                                        <td>
+                                                            <!-- Field HOUR -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="idhora" oninput="validatornumero2(this)"
+                                                                    min="0" max="23" maxlength="2"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label
+                                                                    class="animated preFadeInUp fadeInUp">Hora</label>
+                                                            </div>
+                                                        </td>
 
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">vsibilidad</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-7 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">precipitacion</label>
-                                                    </div>
+                                                        <td>
+                                                            <h1 style="color:white; font-size:20px">Z</h1>
+                                                        </td>
+                                                    </table>
                                                 </div>
 
                                             </div>
 
                                             <!--row #2 -->
-                                            <div class="columns ">
+                                            <div class="columns animated preFadeInUp fadeInUp">
+
+                                                <div class="column">
+                                                    <table>
+                                                        <td>
+                                                            <!-- Field WIND DIRECTION -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="iddireccionviento" min="0" max="360"
+                                                                    step="10"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                    viento</label>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <!-- Field 0-99 -->
+                                                            <div
+                                                                class="control-material is-primary is-grouped column is-11 ">
+                                                                <input id="idintensidad"
+                                                                    oninput="validatornumero2(this)" min="1" max="31"
+                                                                    maxlength="2"
+                                                                    class="material-input animated preFadeInUp fadeInUp "
+                                                                    type="number">
+                                                                <span class="material-highlight"></span>
+                                                                <span class="bar"></span>
+                                                                <label
+                                                                    class="animated preFadeInUp fadeInUp">Intensidad</label>
+                                                            </div>
+                                                        </td>
+
+                                                        <!-- Field categoria -->
+                                                        <div class="control"></div>
+
+                                                        <td class="material-input animated preFadeInUp fadeInUp ">
+                                                            <label class="radio">
+                                                                <input name='tipoviento' id="idtipoviento1" value="KT"
+                                                                    type="radio" name="answer"
+                                                                    class=" animated preFadeInUp fadeInUp">
+                                                                <h1 style="color:white; font-size:20px">KT</h1>
+                                                            </label>
+                                                        </td>
+
+                                                        <td>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;
+                                                        </td>
+
+                                                        <td class="material-input animated preFadeInUp fadeInUp ">
+                                                            <label class="radio">
+                                                                <input name='tipoviento' id="idtipoviento2" value="G"
+                                                                    type="radio" name="answer"
+                                                                    class="animated preFadeInUp fadeInUp">
+                                                                <h1 style="color:white; font-size:20px"> G</h1>
+                                                            </label>
+                                                        </td>
+                                                    </table>
+                                                </div>
+
+
+                                                <td>
+                                                    <!-- Field libre-->
+                                                    <div class="control-material is-primary is-grouped column is-11 ">
+                                                        <input id="idrafaga" oninput="validatornumero2(this)" min="1"
+                                                            max="31" maxlength="2"
+                                                            class="material-input animated preFadeInUp fadeInUp "
+                                                            type="number">
+                                                        <span class="material-highlight"></span>
+                                                        <span class="bar"></span>
+                                                        <label class="animated preFadeInUp fadeInUp">Rafaga</label>
+                                                    </div>
+                                                </td>
+
+                                                <td class="material-input animated preFadeInUp fadeInUp ">
+                                                    <h1 style="color:white; font-size:20px">KT</h1>
+                                                </td>
+
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND DIRECTION 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="iddireccion1" min="0" max="360" step="10"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                viento 1
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td class="material-input animated preFadeInUp fadeInUp ">
+                                                    <h1 style="color:white; font-size:20px">V</h1>
+                                                </td>
+
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND DIRECTION 2-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="iddireccion2" min="0" max="360" step="10"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Direccion
+                                                                viento
+                                                                2</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!--row #3 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <div class="column">
+                                                <!-- Field WIND VISINILITY 1-->
+                                                <div class="control-material is-primary is-grouped column is-11 ">
+                                                    <input id="idvisibilidad1" min="0" max="9999" step="50"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="number">
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Visibilidad
+                                                        1</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <div class="select is-rounded ">
+                                                    <select id="iddireccionvisibilidad1"
+                                                        class="material-input animated preFadeInUp fadeInUp">
+                                                        <option> </option>
+                                                        <option>N </option>
+                                                        <option>NE </option>
+                                                        <option>E </option>
+                                                        <option>SE </option>
+                                                        <option>S </option>
+                                                        <option>SW </option>
+                                                        <option>W </option>
+                                                        <option>NW</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <!-- Field WIND VISINILITY 1-->
+                                                <div class="control-material is-primary is-grouped column is-11 ">
+                                                    <input id="idvisibilidad2" min="50" max="9999" step="50"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="number">
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Visibilidad
+                                                        2</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <div class="select is-rounded ">
+                                                    <select id="iddireccionvisibilidad2"
+                                                        class="material-input animated preFadeInUp fadeInUp">
+                                                        <option> </option>
+                                                        <option>N </option>
+                                                        <option>NE </option>
+                                                        <option>E </option>
+                                                        <option>SE </option>
+                                                        <option>S </option>
+                                                        <option>SW </option>
+                                                        <option>W </option>
+                                                        <option>NW</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--row #4 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+                                            <div class="column">
                                                 <!-- Field -->
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">viento</label>
-                                                    </div>
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno1" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 1</label>
                                                 </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">visibilidad</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">precipitacion</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">capa
-                                                            nublada</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">tempo</label>
-                                                    </div>
-                                                </div>
-
                                             </div>
 
-                                            <!--row #3 -->
-                                            <div class="columns ">
+                                            <div class="column">
                                                 <!-- Field -->
-
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">nieve</label>
-                                                    </div>
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno2" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 2</label>
                                                 </div>
+                                            </div>
 
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label
-                                                            class="animated preFadeInUp fadeInUp">cambio_viento</label>
-                                                    </div>
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-7 ">
+                                                    <input id="idfenomeno3" maxlength="6"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">fenomeno 3</label>
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="column">
-                                                    <!-- Field -->
-                                                    <div class="control-material is-primary is-grouped column is-9 ">
-                                                        <input class="material-input animated preFadeInUp fadeInUp "
-                                                            type="text" required>
-                                                        <span class="material-highlight"></span>
-                                                        <span class="bar"></span>
-                                                        <label class="animated preFadeInUp fadeInUp">prox
-                                                            pronostico</label>
-                                                    </div>
-                                                </div>
+                                        <!--row #5 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 1</p>
+                                                            <select id="idnubosidad1"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor1" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
 
                                             </div>
 
-                                            <!-- Submit -->
-                                            <div>
-                                                <a onclick="validarForm()"
-                                                    class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
-                                                    <span class="text">Generar</span>
-                                                    <span class="front-gradient"></span>
-                                                </a>
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 2</p>
+                                                            <select id="idnubosidad2"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
 
-                                                <button
-                                                    class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
-                                                    <span class="text">Enviar y guardar</span>
-                                                    <span class="front-gradient"></span>
-                                                </button>
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor2" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
 
                                             </div>
 
-                                        </form>
-                                        <!--GENERAR EN TEXT AREA-->
-                                        <div class="column">
-                                            <!-- Field -->
-                                            <div class="control-material is-secondary is-grouped column is-9 ">
-                                                <textarea cols="30" rows="5"
-                                                    class="animated preFadeInUp fadeInUp"></textarea>
-                                                <span class="material-highlight"></span>
-                                                <span class="bar"></span>
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <!-- Field -->
+                                                        <div class="select is-rounded ">
+                                                            <p style="color:white; font-size:14px">Nubosidad 3</p>
+                                                            <select id="idnubosidad3"
+                                                                class="material-input animated preFadeInUp fadeInUp">
+                                                                <option> </option>
+                                                                <option>NSC </option>
+                                                                <option>FEC </option>
+                                                                <option>SCT</option>
+                                                                <option>BKN </option>
+                                                                <option>OVC </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idnubosidadvalor3" min="0" max="999"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                        </div>
+                                                    </td>
+                                                </table>
+
                                             </div>
+                                        </div>
+
+
+                                        <!--row #6 -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+
+                                            <table>
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND VISINILITY 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idtemperatura" min="-50" max="50"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label
+                                                                class="animated preFadeInUp fadeInUp">Temperatura</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <h1 style="color:white; font-size:20px">/</h1>
+                                                </td>
+
+                                                <td>
+                                                    <div class="column">
+                                                        <!-- Field WIND VISINILITY 1-->
+                                                        <div
+                                                            class="control-material is-primary is-grouped column is-11 ">
+                                                            <input id="idtemperaturarocio" min="-50" max="50"
+                                                                class="material-input animated preFadeInUp fadeInUp "
+                                                                type="number">
+                                                            <span class="material-highlight"></span>
+                                                            <span class="bar"></span>
+                                                            <label class="animated preFadeInUp fadeInUp">Temperatura
+                                                                Rocio</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <!-- Field WIND VISINILITY 1-->
+                                                    <div class="control-material is-primary is-grouped column is-15 ">
+                                                        <input id="idhumrelativa" min="0" max="100"
+                                                            class="material-input animated preFadeInUp fadeInUp "
+                                                            type="number">
+                                                        <span class="material-highlight"></span>
+                                                        <span class="bar"></span>
+                                                        <label class="animated preFadeInUp fadeInUp">Humedad
+                                                            relativa</label>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <!-- Field WIND VISINILITY 1-->
+                                                    <div class="control-material is-primary is-grouped column is-15 ">
+                                                        <input id="idqnh" min="0" max="2500"
+                                                            class="material-input animated preFadeInUp fadeInUp "
+                                                            type="number">
+                                                        <span class="material-highlight"></span>
+                                                        <span class="bar"></span>
+                                                        <label class="animated preFadeInUp fadeInUp">QNH</label>
+                                                    </div>
+                                                </td>
+                                            </table>
+
+                                            <div class="column">
+                                                <table>
+                                                    <td>
+                                                        <h1 style="color:white; font-size:20px">P &nbsp</h1>
+                                                    </td>
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi1">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi2">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi3">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="select is-rounded">
+                                                            <select id="idpasocordi4">
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </table>
+                                            </div>
+
+                                        </div>
+
+                                        <!--row #ultimo -->
+                                        <div class="columns animated preFadeInUp fadeInUp">
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-12 ">
+                                                    <input id="idnota" maxlength="40"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Notas</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <div
+                                                    class="select is-rounded is-primary is-grouped animated preFadeInUp fadeInUp ">
+                                                    <select id="idtipofin">
+                                                        <option>NOSIG</option>
+                                                        <option>BECMG</option>
+                                                        <option>TEMP</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <!-- Field -->
+                                                <div class="control-material is-primary is-grouped column is-12 ">
+                                                    <input id="idfin" maxlength="40"
+                                                        class="material-input animated preFadeInUp fadeInUp "
+                                                        type="text" required>
+                                                    <span class="material-highlight"></span>
+                                                    <span class="bar"></span>
+                                                    <label class="animated preFadeInUp fadeInUp">Valor</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="column">
+                                                <label class="checkbox">
+                                                    <input type="checkbox">
+                                                    Opcion
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Submit -->
+                                        <div>
+                                            <a onclick="validarform()"
+                                                class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
+                                                <span class="text">Generar</span>
+                                                <span class="front-gradient"></span>
+                                            </a>
+
+                                            <button
+                                                class="button is-button k-button k-primary raised has-gradient is-bold animated preFadeInUp fadeInUp">
+                                                <span class="text">Enviar y guardar</span>
+                                                <span class="front-gradient"></span>
+                                            </button>
+
+                                        </div>
+
+                                    </form>
+                                    <!--GENERAR EN TEXT AREA-->
+                                    <div class="column">
+                                        <!-- Field -->
+                                        <div class="control-material is-secondary is-grouped column is-9 ">
+                                            <textarea id="idresultado" cols="30" rows="5"
+                                                class="animated preFadeInUp fadeInUp"></textarea>
+                                            <span class="material-highlight"></span>
+                                            <span class="bar"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1310,6 +1895,11 @@
 
             </div>
             <!-- Content wrapper -->
+
+
+
+
+
         </div>
         <!-- /Container -->
     </section>
@@ -1382,11 +1972,6 @@
     <script src="{% static 'assets/js/main.js' %}" defer="defer"></script>
     <script src="{% static 'assets/js/validator.js' %}"></script>
 
-    <script>
-        function validarForm() {
-            alert('validando formulario....');
-        }
-    </script>
 </body>
 
 </html>
