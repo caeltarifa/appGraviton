@@ -76,3 +76,14 @@ class ESPECI_table(models.Model):
     comentario = models.CharField(max_length=80)
     nubes_opcion = models.CharField(max_length=80)
     presion = models.CharField(max_length=80)
+
+class Metar_trafico(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_amhs = models.CharField(max_length=30)
+    fecha_llegada =models.DateField()
+    hora_amhs = models.CharField(max_length=10)
+    prioridad = models.CharField(max_length=2)
+    estacion = models.CharField(max_length=50)
+    hora_clima = models.CharField(max_length=60)
+    texto = models.CharField(max_length=1000)
+    visto = models.BooleanField(default=False) 

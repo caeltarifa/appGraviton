@@ -182,17 +182,16 @@
                             <!-- Tabs -->
                             <div class="flying-tabs">
                                 <div class="flying-child tab-1 is-active" data-tab="tab-1"><a
-                                        href="javascript:void(0);">TAF</a>
+                                        href="javascript:void(0);">METAR</a>
                                 </div>
 
-                                <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">METAR</a>
+                                <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">SIGMET</a>
                                 </div>
 
                                 <div class="flying-child tab-3" data-tab="tab-3"><a href="javascript:void(0);">SPECI</a>
                                 </div>
 
-                                <div class="flying-child tab-4" data-tab="tab-4"><a
-                                        href="javascript:void(0);">SIGMET</a>
+                                <div class="flying-child tab-4" data-tab="tab-4"><a href="javascript:void(0);">TAF</a>
                                 </div>
                                 <div class="slider"></div>
                             </div>
@@ -205,29 +204,13 @@
                                 <!-- LINEA DEL TIEMPO -->
                                 <section class="main-timeline animated preFadeInUp fadeInUp ">
                                     <ul>
-                                        <li>
+					{% for elemen in metar %}
+					 <li>
                                             <div>
-                                                <span class="item-title">6 de octubre 2019</span>
-                                                <time>UTC 2300</time>
+                                                <span class="item-title">{{elemen.id_amhs}} - {{elemen.estacion}} </span>
+                                                <time>{{elemen.hora_amhs}}</time>
                                                 <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="item-title">5 de octubre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
+                                                        {{elemen.texto}}
                                                 </span>
                                                 <span class="more">
                                                     <i data-feather="file-text"></i>
@@ -236,81 +219,7 @@
                                             </div>
                                         </li>
 
-                                        <li>
-                                            <div>
-                                                <span class="item-title">4 de octubre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="item-title">3 de octubre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="item-title">2 de octubre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="item-title">1 de octubre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="item-title">30 de septiembre 2019</span>
-                                                <time>UTC 2300</time>
-                                                <span class="item-content">
-                                                    201910061600 METAR SLLP 061600Z 30014G24KT 260V340 9999 SCT017
-                                                    SCT200
-                                                    11/M06 Q1035=
-                                                </span>
-                                                <span class="more">
-                                                    <i data-feather="file-text"></i>
-                                                    <a href="#">Dato completo</a>
-                                                </span>
-                                            </div>
-                                        </li>
+                        	        {% endfor %}
                                     </ul>
                                 </section>
                             </div>

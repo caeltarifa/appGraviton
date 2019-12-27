@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
+from django.db import connection
 
 from apps.datagen.forms import PostForm, Taf_generar_form
-from apps.datagen.models import TAF_table
+from apps.datagen.models import TAF_table, Metar_trafico
 from apps.mapgen.views import view_mapa_index
 # Create your views here.
 
@@ -13,9 +14,6 @@ def view_generador_index(request):
         return render(request, 'datagen/index.html')
     else:
         return redirect('login')
-
-
-
 
 
 
@@ -48,9 +46,6 @@ def post_detail(request, pk):
     return render(request, 'datagen/post_detail.html',  {'post':post})
 
 
-
-
-
 #MOSTRANDO OTRAS PAGINAS WEB
 def view_pagina_generar(request):
     return render(request, 'generador.html')
@@ -58,4 +53,8 @@ def view_pagina_generar(request):
 
 
 def view_pagina_mapa(request):
-    return render(request, 'mapgen.html')
+     if request.user.is_authenticated:
+     	#metar=Metar_trafico.objects.raw("select * from plan_vuelo_metar_trafico where hora_amhs like '14%%%%' order by id_amhs desc ")
+         return render(request, 'mapgen.html') #,{'metar':metar})
+	#else:
+     return redirect('login')

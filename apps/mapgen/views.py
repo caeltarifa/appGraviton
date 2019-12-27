@@ -1,14 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
+from django.db import connection
 
 from apps.datagen.forms import PostForm, Taf_generar_form
-from apps.datagen.models import TAF_table
+from apps.datagen.models import TAF_table, Metar_trafico
 # Create your views here.
 
 #mostrando la pagina principal de mapgen
 def view_mapa_index(request):
-    return render(request, 'mapgen.html')
+    if request.user.is_authenticated:
+                #post=Flp_trafico.objects.raw("select * from p$
+         metar=Metar_trafico.objects.raw("select * from plan_vuelo_flp_trafico where hora_amhs like '12%%%%' order by id_amhs desc ")
+         return render(request, 'mapgen.html',{'metar':metar})
+    else:
+         return redirect('login')
+#return render(request, 'mapgen.html')
 
 
 
