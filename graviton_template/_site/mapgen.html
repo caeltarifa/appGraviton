@@ -101,7 +101,6 @@
                 </nav>
                 <!-- /Cloned navbar -->
 
-
                 <!-- Static navbar -->
                 <nav class="navbar is-light">
                     <div class="container">
@@ -156,7 +155,7 @@
                 <!-- /Static navbar -->
             </div>
             <!--/NAV BAR-->
-            
+
             <!--MAP section-->
             <div class="has-text-centered " style="align-content: center; z-index: 0;">
                 <a href="#sectionDatos">
@@ -167,13 +166,13 @@
         </section>
 
         <!-- DATOS section -->
-        <section class="section is-medium is-end" >
+        <section class="section is-medium is-end">
             <!-- Container -->
             <div class="container" id="sectionDatos">
                 <!-- Divider -->
                 <div class="divider is-centered"></div>
                 <!-- Title & subtitle -->
-                <div class="hero-body has-text-centered " style="z-index: 1;" >
+                <div class="hero-body has-text-centered " style="z-index: 1;">
                     <div class="columns">
                         <div class="column is-6 is-offset-3">
                             <h1 class="title is-2 is-light is-semibold is-spaced main-title">Estado del tiempo</h1>
@@ -205,7 +204,8 @@
                                         href="javascript:void(0);">METAR</a>
                                 </div>
 
-                                <div class="flying-child tab-2" data-tab="tab-2"><a href="javascript:void(0);">SIGMET</a>
+                                <div class="flying-child tab-2" data-tab="tab-2"><a
+                                        href="javascript:void(0);">SIGMET</a>
                                 </div>
 
                                 <div class="flying-child tab-3" data-tab="tab-3"><a href="javascript:void(0);">SPECI</a>
@@ -224,13 +224,14 @@
                                 <!-- LINEA DEL TIEMPO -->
                                 <section class="main-timeline animated preFadeInUp fadeInUp ">
                                     <ul>
-					{% for elemen in metar %}
-					 <li>
+                                        {% for elemen in metar %}
+                                        <li>
                                             <div>
-                                                <span class="item-title">{{elemen.id_amhs}} - {{elemen.estacion}} </span>
+                                                <span class="item-title">{{elemen.id_amhs}} - {{elemen.estacion}}
+                                                </span>
                                                 <time>{{elemen.hora_amhs}}</time>
                                                 <span class="item-content">
-                                                        {{elemen.texto}}
+                                                    {{elemen.texto}}
                                                 </span>
                                                 <span class="more">
                                                     <i data-feather="file-text"></i>
@@ -239,7 +240,7 @@
                                             </div>
                                         </li>
 
-                        	        {% endfor %}
+                                        {% endfor %}
                                     </ul>
                                 </section>
                             </div>
@@ -610,55 +611,55 @@
 
     <!--PIE DE PAGINA-->
     <footer class="krypton-footer">
-            <div class="container">
-                <!-- Logo -->
-                <div class="footer-logo">
-                    <a href="#">
-                        <img class="rotating" src="{% static 'assets/images/logo/krypton-gradient.svg' %}" alt="">
-                        <div class="brand-name">Nuclear</div>
-                    </a>
-                </div>
-    
-<!-- Columns -->
-<div class="columns footer-columns is-vcentered">
-    <!-- Links group -->
-        <div class="column is-6">
-            <ul class="footer-links">
-
-                <li>
-                    <a href="#">Upsilon</a>
-                </li>
-
-                <li>
-                    <a href="#">Boson</a>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- Links group -->
-        <div class="column is-6">
-            <ul class="footer-links">
-                <li>
-                    <a href="#">Positron</a>
-                </li>
-
-                <li>
-                    <a href="#">Tauon</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-                <!-- Copyright -->
-                <p class="k-copyright">© 2019 | Graviton.</p>
-                <br>
-                <!-- Made by -->
-                <p class="coded-by">Diseñado y codificado <a href="https://github.com" target="_blank">Cael Tarifa</a></p>
+        <div class="container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <a href="#">
+                    <img class="rotating" src="{% static 'assets/images/logo/krypton-gradient.svg' %}" alt="">
+                    <div class="brand-name">Nuclear</div>
+                </a>
             </div>
-    
-            <!-- Absolute image -->
-        </footer>
-        <!--/PIE DE PAGINA-->
+
+            <!-- Columns -->
+            <div class="columns footer-columns is-vcentered">
+                <!-- Links group -->
+                <div class="column is-6">
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="#">Upsilon</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Boson</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Links group -->
+                <div class="column is-6">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#">Positron</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Tauon</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <p class="k-copyright">© 2019 | Graviton.</p>
+            <br>
+            <!-- Made by -->
+            <p class="coded-by">Diseñado y codificado <a href="https://github.com" target="_blank">Cael Tarifa</a></p>
+        </div>
+
+        <!-- Absolute image -->
+    </footer>
+    <!--/PIE DE PAGINA-->
 
 
     <!-- Core js -->
