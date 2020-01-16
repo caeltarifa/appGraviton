@@ -1,0 +1,10 @@
+#windy #logo-wrapper ,
+#windy #mobile-ovr-select{
+    display: none !important;
+}
+
+#windy #bottom,{
+    top: initial;
+    bottom: 40px;
+}
+

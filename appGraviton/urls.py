@@ -27,6 +27,7 @@ urlpatterns = [
     path('datagen/',include('apps.datagen.urls')),
     path('datagen/postdetail/<int:pk>/', views.post_detail , name='post_detail'),
     path('mapgen/',include('apps.mapgen.urls')),
+    path('obs/',include('apps.obs.urls')),
     path('accounts/login',denegar_login),
 ]
 

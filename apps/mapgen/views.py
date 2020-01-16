@@ -7,17 +7,18 @@ from apps.datagen.forms import PostForm, Taf_generar_form
 from apps.datagen.models import TAF_table, Metar_trafico
 # Create your views here.
 
-#mostrando la pagina principal de mapgen
+# mostrando la pagina principal de mapgen
+
+
 def view_mapa_index(request):
     if request.user.is_authenticated:
-                #post=Flp_trafico.objects.raw("select * from p$
-         metar=Metar_trafico.objects.raw("select * from plan_vuelo_flp_trafico where hora_amhs like '12%%%%' order by id_amhs desc ")
-         return render(request, 'mapgen.html',{'metar':metar})
+                # post=Flp_trafico.objects.raw("select * from p$
+        metar = Metar_trafico.objects.raw(
+            "select * from plan_vuelo_flp_trafico where hora_amhs like '12%%%%' order by id_amhs desc limit 20")
+        return render(request, 'mapgen.html', {'metar': metar})
     else:
-         return redirect('login')
-#return render(request, 'mapgen.html')
-
-
+        return redirect('login')
+# return render(request, 'mapgen.html')
 
 
 def view_form_taf(request):
@@ -26,35 +27,36 @@ def view_form_taf(request):
         if form.is_valid():
             form.save()
         return redirect('datagen/index.html')
-    return render(request, 'datagen/temp_taf_form.html', {'form':Taf_generar_form.meta})
+    return render(request, 'datagen/temp_taf_form.html', {'form': Taf_generar_form.meta})
 
-#showing the taf form
+# showing the taf form
+
+
 def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            post=form.save(commit=False)
-            post.author=request.user
+            post = form.save(commit=False)
+            post.author = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
         else:
-            return render(request, 'datagen/index.html',{'form':form})
+            return render(request, 'datagen/index.html', {'form': form})
     else:
-        form=PostForm()
-        return render(request, 'datagen/post_edit.html', {'form':form})
+        form = PostForm()
+        return render(request, 'datagen/post_edit.html', {'form': form})
+
 
 def post_detail(request, pk):
     post = get_object_or_404(TAF_table, pk=pk)
-    return render(request, 'datagen/post_detail.html',  {'post':post})
+    return render(request, 'datagen/post_detail.html',  {'post': post})
 
 
-
-
-
-#MOSTRANDO OTRAS PAGINAS WEB
+# MOSTRANDO OTRAS PAGINAS WEB
 def view_pagina_generar(request):
     return render(request, 'generador.html')
+
 
 def view_pagina_mapa(request):
     return render(request, 'mapgen.html')

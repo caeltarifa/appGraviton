@@ -70,11 +70,21 @@
 
                                 <!-- Menu item -->
                                 <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="{% url 'index_observacion' %}">
+                                        <!--target="_blank"-->
+                                        <img class="telegram" src="{% static 'assets/images/logo/telegram.svg' %}"
+                                            alt="">
+                                        Observar
+                                    </a>
+                                </div>
+
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
                                     <a class="is-centered-responsive" href="{% url 'pagina_generar' %}">
                                         <!--target="_blank"-->
                                         <img class="telegram" src="{% static 'assets/images/logo/telegram.svg' %}"
                                             alt="">
-                                        GENERAR
+                                        Generar
                                     </a>
                                 </div>
                                 <!-- VER MAPA DE DATOS -->
@@ -112,7 +122,17 @@
                         <div id="navbarMenu" class="navbar-menu light-menu">
                             <div class="navbar-end">
 
-                                <!-- Menu item -->
+                                <!-- Menu item observar-->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="{% url 'index_observacion' %}">
+                                        <!-- target="_blank"> -->
+                                        <img class="telegram" src="{% static 'assets/images/logo/telegram.svg' %}"
+                                            alt="">
+                                        Observar
+                                    </a>
+                                </div>
+
+                                <!-- Menu item generar-->
                                 <div class="navbar-item is-nav-link">
                                     <a class="is-centered-responsive" href="{% url 'pagina_generar' %}">
                                         <!-- target="_blank"> -->

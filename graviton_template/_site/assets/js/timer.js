@@ -6,7 +6,7 @@ $(document).ready(function() {
  * GLOBAL VARS
  * -------------------------- */
     // The date you want to count down to
-    var targetDate = new Date("2018/06/25 00:00:00");   
+    var targetDate = new Date("2019/12/29 00:00:00");
 
     // Other date related variables
     var days;
@@ -20,7 +20,7 @@ $(document).ready(function() {
     $(function() {
         // Calculate time until launch date
         timeToLaunch();
-        // Transition the current countdown from 0 
+        // Transition the current countdown from 0
         numberTransition('#days .timer-number', days, 1000, 'easeOutQuad');
         numberTransition('#hours .timer-number', hrs, 1000, 'easeOutQuad');
         numberTransition('#minutes .timer-number', min, 1000, 'easeOutQuad');
